@@ -51,24 +51,29 @@ def summarize_video(link, max_lines=15):
 
     return summarized_result
 
-# Streamlit app
 def main():
-    st.title("YouTube Video Summarizer")
+    try:
+    # Streamlit app
+        def main():
+            st.title("YouTube Video Summarizer")
 
-    # User input: YouTube link
-    youtube_link = st.text_input("Enter YouTube video link:")
-    
-    if st.button("Summarize"):
-        # Check if the link is provided
-        if not youtube_link:
-            st.warning("Please enter a YouTube video link.")
-        else:
-            # Summarize and display the result
-            summarized_result = summarize_video(youtube_link)
-            st.write("Summarized text:\n" + summarized_result)
+            # User input: YouTube link
+            youtube_link = st.text_input("Enter YouTube video link:")
+            
+            if st.button("Summarize"):
+                # Check if the link is provided
+                if not youtube_link:
+                    st.warning("Please enter a YouTube video link.")
+                else:
+                    # Summarize and display the result
+                    summarized_result = summarize_video(youtube_link)
+                    st.write("Summarized text:\n" + summarized_result)
 
-if __name__ == "__main__":
-    main()
+        if __name__ == "__main__":
+            main()
+    except Exception as e:
+        st.error(f"An unexpected error occured: {e}")
+
 
 
     
